@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 
 namespace WheelchairShaun.HittMixMaker.Core
 {
-	public class MP3File : IAudioFile
+	public class AACFile : IAudioFile
 	{
-		private const string FILE_EXTENSION = "mp3";
 
-		public MP3File() { }
+		private const string FILE_EXTENSION = "aac";
 
-		public MP3File(string filePath)
+		public AACFile() { }
+
+		public AACFile(string filePath)
 		{
 			FilePath = filePath;
 		}
 
-		public MP3File(string filePath, string song, string artist, string album)
+		public AACFile(string filePath, string song, string artist, string album)
 		{
 			FilePath = filePath;
 			Song = song;
