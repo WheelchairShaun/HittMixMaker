@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WheelchairShaun.HittMixMaker.Core
 {
-	public class MP3File : IAudioFile
+	public class MP3File : ISong
 	{
 		private const string FILE_EXTENSION = "mp3";
 
@@ -16,10 +16,11 @@ namespace WheelchairShaun.HittMixMaker.Core
 			FilePath = filePath;
 		}
 
-		public MP3File(string filePath, string song, string artist, string album)
+		public MP3File(string filePath, string song, int length, string artist, string album)
 		{
 			FilePath = filePath;
 			Song = song;
+			Length = length;
 			Artist = artist;
 			Album = album;
 		}
@@ -27,6 +28,7 @@ namespace WheelchairShaun.HittMixMaker.Core
 		public string FilePath { get; set; }
 		public string FileExtension { get { return FILE_EXTENSION; } }
 		public string Song { get; set; }
+		public int Length { get; set; }
 		public string Artist { get; set; }
 		public string Album { get; set; }
 		public string AlbumArtist { get; set; }
