@@ -5,30 +5,33 @@ using System.Text;
 
 namespace WheelchairShaun.HittMixMaker.Core
 {
-	public class MP3File : ISong
+	public class MP3File : ISong, IEquatable<MP3File>
 	{
 		private const string FILE_EXTENSION = "mp3";
 
 		public MP3File() { }
 
-		public MP3File(string filePath)
+		public MP3File(string filePath, string fileName)
 		{
 			FilePath = filePath;
+			FileName = fileName;
 		}
 
-		public MP3File(string filePath, string song, int length, string artist, string album)
+		public MP3File(string filePath, string fileName, string title, int lengthInSeconds, string artist, string album)
 		{
 			FilePath = filePath;
-			Song = song;
-			Length = length;
+			FileName = fileName;
+			Title = title;
+			LengthInSeconds = lengthInSeconds;
 			Artist = artist;
 			Album = album;
 		}
 
 		public string FilePath { get; set; }
+		public string FileName { get; set; }
 		public string FileExtension { get { return FILE_EXTENSION; } }
-		public string Song { get; set; }
-		public int Length { get; set; }
+		public string Title { get; set; }
+		public int LengthInSeconds { get; set; }
 		public string Artist { get; set; }
 		public string Album { get; set; }
 		public string AlbumArtist { get; set; }
@@ -41,5 +44,36 @@ namespace WheelchairShaun.HittMixMaker.Core
 		public int Disc { get; set; }
 		public int AlbumDiscs { get; set; }
 		public bool Compilation { get; set; }
+
+		public override bool Equals(object obj)
+		{
+			if (obj == null) return false;
+			ISong objAsISong = obj as ISong;
+			if (objAsISong == null) return false;
+			else return Equals(objAsISong);
+		}
+
+		public bool Equal(ISong other)
+		{
+			if (other == null) return false;
+			if (!other.Title.Equals(this.Title)) return false;
+			if (!other.Artist.Equals(this.Artist)) return false;
+			if (!other.Album.Equals(this.Album)) return false;
+			if (!other.LengthInSeconds.Equals(this.LengthInSeconds)) return false;
+			return true;
+		}
+
+		public bool Equals(MP3File other)
+		{
+			if (other == null) return false;
+			ISong objAsISong = other as ISong;
+			if (objAsISong == null) return false;
+			return Equals(objAsISong);
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
 	}
 }

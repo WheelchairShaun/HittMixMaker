@@ -8,8 +8,9 @@ namespace WheelchairShaun.HittMixMaker.Core
 	public interface ISong
 	{
 		public string FilePath { get; set; }
-		public string Song { get; set; }
-		public int Length { get; set; }
+		public string FileName { get; set; }
+		public string Title { get; set; }
+		public int LengthInSeconds { get; set; }
 		public string Artist { get; set; }
 		public string Album { get; set; }
 		public string AlbumArtist { get; set; }

@@ -42,12 +42,43 @@ namespace WheelchairShaun.HittMixMaker.Core
 		public string ExtendedInfo { get { return EXTENDED_INFO; } }
 		public string Name { get; set; }
 
-		public IList<ISong> Songs
+		public void Add(ISong song)
 		{
-			get { return _songs; }
+			_songs.Add(song);
 		}
 
+		public void Clear()
+		{
+			_songs.Clear();
+		}
 
+		public bool Contains(ISong song)
+		{
+			throw new NotImplementedException();
+		}
 
+		public int Count()
+		{
+			return _songs.Count;
+		}
+
+		public void Insert(int position, ISong song)
+		{
+			if (position < 0 || position > _songs.Count) throw new ArgumentOutOfRangeException();
+
+			_songs.Insert(position, song);
+		}
+
+		public void RemoveAt(int position)
+		{
+			if (position < 0 || position >= _songs.Count) throw new ArgumentOutOfRangeException();
+
+			_songs.RemoveAt(position);
+		}
+
+		public override string ToString()
+		{
+			return base.ToString();
+		}
 	}
 }
